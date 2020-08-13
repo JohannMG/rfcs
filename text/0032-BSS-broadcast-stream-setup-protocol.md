@@ -7,7 +7,8 @@ Add a URL hook into OBS to configure settings. This will enable applications and
 By making the protocol open and able to work both from multiple vendors and to multiple streaming packages we would encourage adoption. The ability to export from the service webpages also would require fewer log-ins and service-specific API implementations.
 
 
-**Proposed Protocol**
+## Proposed Protocol
+
 Implement `bss:` for "broadcast software setup", a simple example would be `bss://settings?streamkey=XXXXX` where the user can export the stream key using a URL hook.
 
 A longer example would be
@@ -58,9 +59,24 @@ All string fields are base64 encoded and then URL encoded because URL encoding i
 > Source: https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)?redirectedfrom=MSDN
 
 
-**Implementation**
+## Example in Web UI
 
-_MacOS_
+Export button near broadcast settings:
+
+![Export Settings Button](https://i.imgur.com/BOuByTs.png "Export Settings Button")
+
+When clicked browser checks if you want to activate default program:
+
+![Chrome open link](https://i.imgur.com/GBvN4px.png "Chome open link")
+
+Target Application (i.e., OBS) opens the string to use and parse:
+
+![Example Application opens with URL](https://i.imgur.com/yrHKr5x.png)
+
+
+## Implementation
+
+**MacOS**
 
 I wrote an example application as an example to open and handle url protocols. In this casem, the application is already registered and it's a matter of handling Qt's [QFileOpenEvent](https://doc.qt.io/qt-5/qfileopenevent.html) event: https://github.com/JohannMG/QtUrlOpenApplication/
 
@@ -68,7 +84,7 @@ This also requires changes to the application installer but this is a small chan
 
 Mac seems to be the easier implementation. With the caveat of needing a signed copy to test URL/protocol registration.
 
-_Windows_
+**Windows**
 
 Windows requires registration as well. But additionally, while mac applications attempt to keep only one instance of an application running, windows  always handles URL protocols by spawning a new executable and it is your responsibility to have that new exe process signal the already running one if that's the logic you want.
 
@@ -78,7 +94,7 @@ The solutions I found here that are native to Qt are using `QSharedMemory` and `
 
 After handoff the newer process should focus the first application version and then terminate.
 
-_Linux_
+**Linux**
 
 I'm unclear on launch protocols for URL handling but Qt messageing in windows should work similarly.
 
