@@ -45,7 +45,28 @@ which carries all the following fields to be set into OBS (or another streaming 
 
 this would import the settings into the software with a confirmation dialog. All the fields are optional e.g., I would see cases `max_bitrate` and `bitrate` are mutually exclusive when a speedtest determined the bitrate.
 
+**Encoding**
+
+The fields are base64 encoded and then URL encoded becuase URL encoding is removed by both Windows and MacOS when passes to the application from browsers.
+
+> Because Internet Explorer will decode all percent-encoded octets in the URI before passing the resulting string to ShellExecute, URIs such as alert:%3F? will be given to the alert application pluggable protocol handler as alert:??. The handler won't know that the first question mark was percent-encoded. To avoid this issue, pluggable protocol handlers and their associated URI scheme must not rely on encoding. If encoding is necessary, protocol handlers should use another type of encoding that is compatible with URI syntax, such as Base64 encoding. Double percent-encoding is not a good solution either; if the application protocol URI isn't processed by Internet Explorer, it will not be decoded.
+
+> Source: https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)?redirectedfrom=MSDN
+
+
 **Implementation**
+
+_MacOS_
+
+I wrote an example application how to open and handle. In this case the application is already registered and it's a matter of handling Qt's [QFileOpenEvent](https://doc.qt.io/qt-5/qfileopenevent.html) event: https://github.com/JohannMG/QtUrlOpenApplication/
+
+This also requires changes to the application installer but this is a small change: [Apple Developer: Defining a Custom URL Scheme for Your App](https://developer.apple.com/documentation/xcode/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)
+
+Mac seems to be the easier implementation.
+
+_Windows_
+
+Windows requires registration as well. But additionally, while mac applications attempt to keep only one ionstance of an application running, windows  always handles URL protocols by spawning a new executable and it is your responsibility to have that new exe process signal the already running one if that's the logic you want. OBS already has similar
 
 
 # Motivation
