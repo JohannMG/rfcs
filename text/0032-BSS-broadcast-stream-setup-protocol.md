@@ -62,11 +62,11 @@ All string fields are base64 encoded and then URL encoded because URL encoding i
 
 _MacOS_
 
-I wrote an example application how to open and handle. In this case the application is already registered and it's a matter of handling Qt's [QFileOpenEvent](https://doc.qt.io/qt-5/qfileopenevent.html) event: https://github.com/JohannMG/QtUrlOpenApplication/
+I wrote an example application as an example to open and handle url protocols. In this casem, the application is already registered and it's a matter of handling Qt's [QFileOpenEvent](https://doc.qt.io/qt-5/qfileopenevent.html) event: https://github.com/JohannMG/QtUrlOpenApplication/
 
 This also requires changes to the application installer but this is a small change: [Apple Developer: Defining a Custom URL Scheme for Your App](https://developer.apple.com/documentation/xcode/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)
 
-Mac seems to be the easier implementation.
+Mac seems to be the easier implementation. With the caveat of needing a signed copy to test URL/protocol registration.
 
 _Windows_
 
