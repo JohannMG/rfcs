@@ -12,7 +12,7 @@ Implement `bss:` for "broadcast software setup", a simple example would be `bss:
 
 A longer example would be
 
-`bss://settings?service=facebook&service_url=cnRtcHM6Ly9saXZlLWFwaS1zLmZhY2Vib29rLmNvbTo0NDMvcnRtcC8%3D=&stream_type=rmtp&stream_key=NjQzNzgzMT9zX2JsPTEmc19zbWw9Mw%3D%&max_bitrate=6000&bitrate=4300&max_resolution_v=1280&max_resolution_h=720&gop_seconds=2`
+`bss:settings?service=facebook&service_url=cnRtcHM6Ly9saXZlLWFwaS1zLmZhY2Vib29rLmNvbTo0NDMvcnRtcC8%3D=&stream_type=rmtp&stream_key=NjQzNzgzMT9zX2JsPTEmc19zbWw9Mw%3D%&max_bitrate=6000&bitrate=4300&max_resolution_v=1280&max_resolution_h=720&gop_seconds=2`
 
 which carries all the following fields to be set into OBS (or another streaming product)
 
@@ -119,4 +119,18 @@ I've listed above the primary endpoints I think would benefit users. When adding
 
 # Additional Information
 
-Any additional information that may not be covered above that you feel is relevant. External links, references, examples, etc.
+_Any additional information that may not be covered above that you feel is relevant. External links, references, examples, etc._
+
+ - Per URL/URI specs the `//` after a protocol `:` is not needed in a case like this
+ - Facebook has a first implementation of this export settings privately we could possibly open when this moves forward.
+ - Some other examples include
+   - Visual Studio Code [VSCode://open](vscode://open)
+   - Spotify [spotify:track:1uGMdLrHArM71tclFK8xRw](spotify:track:1uGMdLrHArM71tclFK8xRw)
+   - Zoom Meetings `zoommtg://XX.zoom.us/join?action=join&confno=9999999&zc=55mcv=0.92.1.0929&confid=<string in base 64, the URL encoded>browser=chrome&t=18916`
+     - Zoom also uses URL encoded base64 strings
+   - Common email `mailto:name@email.com&subject=NoHello`
+     - Many generators: https://www.rapidtables.com/web/html/mailto.html
+ - Telegram desktop uses `tg://`, `tg://setlanguage?lang=`
+   - open source and Qt: https://github.com/telegramdesktop/tdesktop
+   - Exmaple of it's source for [files here here](https://github.com/telegramdesktop/tdesktop/blob/511067981dcf546c40adc0289420fe88d2a635d3/Telegram/SourceFiles/core/application.cpp#L443) for mac.
+   - Examples handling other URL events e.g., `tg://setlanguage?lang=es` [here](https://github.com/telegramdesktop/tdesktop/blob/e5434ea4915a93eb90b4c75ae79cb571001f7e3b/Telegram/SourceFiles/core/local_url_handlers.cpp#L517)
