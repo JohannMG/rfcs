@@ -12,7 +12,7 @@ Implement `bss:` for "broadcast software setup", a simple example would be `bss:
 
 A longer example would be
 
-`bss:settings?service=facebook&service_url=cnRtcHM6Ly9saXZlLWFwaS1zLmZhY2Vib29rLmNvbTo0NDMvcnRtcC8%3D=&stream_type=rmtp&stream_key=NjQzNzgzMT9zX2JsPTEmc19zbWw9Mw%3D%&max_bitrate=6000&bitrate=4300&max_resolution_v=1280&max_resolution_h=720&gop_seconds=2`
+`bss:settings?service=ZmFjZWJvb2s%3D&service_url=cnRtcHM6Ly9saXZlLWFwaS1zLmZhY2Vib29rLmNvbTo0NDMvcnRtcC8%3D=&stream_type=cm10cA%3D%3D&stream_key=NjQzNzgzMT9zX2JsPTEmc19zbWw9Mw%3D%&max_bitrate=6000&bitrate=4300&max_resolution_v=1280&max_resolution_h=720&gop_seconds=2`
 
 which carries all the following fields to be set into OBS (or another streaming product)
 
