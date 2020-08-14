@@ -13,7 +13,17 @@ Implement `bss:` for "broadcast software setup", a simple example would be `bss:
 
 A longer example would be
 
-`bss:settings?service=ZmFjZWJvb2s%3D&service_url=cnRtcHM6Ly9saXZlLWFwaS1zLmZhY2Vib29rLmNvbTo0NDMvcnRtcC8%3D=&stream_type=cm10cA%3D%3D&stream_key=NjQzNzgzMT9zX2JsPTEmc19zbWw9Mw%3D%&max_bitrate=6000&bitrate=4300&max_resolution_v=1280&max_resolution_h=720&gop_seconds=2`
+```url
+bss:settings?service=ZmFjZWJvb2s%3D
+&service_url=cnRtcHM6Ly9saXZlLWFwaS1zLmZhY2Vib29rLmNvbTo0NDMvcnRtcC8%3D=
+&stream_type=cm10cA%3D%3D
+&stream_key=NjQzNzgzMT9zX2JsPTEmc19zbWw9Mw%3D%
+&max_bitrate=6000
+&bitrate=4300
+&max_res_v=1280
+&max_res_h=720
+&gop_seconds=2
+```
 
 which carries all the following fields to be set into OBS (or another streaming product)
 
@@ -146,7 +156,7 @@ _Any additional information that may not be covered above that you feel is relev
      - Zoom also uses URL encoded base64 strings
    - Common email `mailto:name@email.com&subject=NoHello`
      - Many generators: https://www.rapidtables.com/web/html/mailto.html
- - Telegram desktop uses `tg://`, `tg://setlanguage?lang=`
-   - open source and Qt: https://github.com/telegramdesktop/tdesktop
-   - Exmaple of it's source for [files here here](https://github.com/telegramdesktop/tdesktop/blob/511067981dcf546c40adc0289420fe88d2a635d3/Telegram/SourceFiles/core/application.cpp#L443) for mac.
-   - Examples handling other URL events e.g., `tg://setlanguage?lang=es` [here](https://github.com/telegramdesktop/tdesktop/blob/e5434ea4915a93eb90b4c75ae79cb571001f7e3b/Telegram/SourceFiles/core/local_url_handlers.cpp#L517)
+   - Telegram desktop uses `tg://`, `tg://setlanguage?lang=`
+     - open source and Qt: https://github.com/telegramdesktop/tdesktop
+     - Exmaple of it's source for [files here here](https://github.com/telegramdesktop/tdesktop/blob/511067981dcf546c40adc0289420fe88d2a635d3/Telegram/SourceFiles/core/application.cpp#L443) for mac.
+     - Examples handling other URL events e.g., `tg://setlanguage?lang=es` [here](https://github.com/telegramdesktop/tdesktop/blob/e5434ea4915a93eb90b4c75ae79cb571001f7e3b/Telegram/SourceFiles/core/local_url_handlers.cpp#L517)
